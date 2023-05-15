@@ -8,11 +8,11 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
     solidity: {
-        version: "0.8.17",
+        version: "0.8.19",
         settings: {
           optimizer: {
             enabled: true,
-            runs: 1000,
+            runs: 999,
             details: { yul: false },
           },
         },
@@ -26,7 +26,7 @@ module.exports = {
         },
         hyperspace: {
             chainId: 3141,
-            url: "https://api.hyperspace.node.glif.io/rpc/v1",
+            url: "https://rpc.ankr.com/filecoin_testnet",
             accounts: [PRIVATE_KEY],
         },
         filecoinmainnet: {
