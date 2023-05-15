@@ -1,0 +1,12 @@
+{
+    "Deployer": "0xb12604b91bab991702388fb944f033e5d7ffe224",
+    "DripsHub": "0x62279E3aDD543FD456A2a4Db7a70a786Ba7107F6",
+    "DripsHub cycle seconds": "604800",
+    "DripsHub logic": "0xbe131d793925c506ee49b100dccd7d103eeabae",
+    "DripsHub admin": "0x840c1b6ce85bbfebcfad737514c0097b078a7e7e",
+    "Caller": "",
+    "AddressDriver": "0xF359475404fa284601eD38Ac67f01C32a83373cC",
+    "AddressDriver logic": "0xa2f5f6886fb0afb7b71dc9affe66dc02aef5eaad",
+    "AddressDriver admin": "0x840c1b6ce85bbfebcfad737514c0097b078a7e7e",
+    "AddressDriver ID": "0"
+}
