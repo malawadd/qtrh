@@ -14,31 +14,9 @@ module.exports = async ({ deployments }) => {
     const tokensToBeMinted = networkConfig[chainId]["tokensToBeMinted"]
 
     
-    //deploy Simplecoin
-    const simpleCoin = await deploy("SimpleCoin", {
+    const Deployer = await deploy("Deployer", {
         from: wallet.address,
-        args: [tokensToBeMinted],
-        log: true,
-    });
-
-    //deploy FilecoinMarketConsumer
-    const filecoinMarketConsumer = await deploy("FilecoinMarketConsumer", {
-        from: wallet.address,
-        args: [],
-        log: true,
-    });
-
-    //deploy DealRewarder
-    const dealRewarder = await deploy("DealRewarder", {
-        from: wallet.address,
-        args: [],
-        log: true,
-    });
-    
-    //deploy DealClient
-    const dealClient = await deploy("DealClient", {
-        from: wallet.address,
-        args: [],
+        args: ["604800", "0x840C1b6ce85bBFEbcFAd737514c0097B078a7E7E", "0x840C1b6ce85bBFEbcFAd737514c0097B078a7E7E", "0x840C1b6ce85bBFEbcFAd737514c0097B078a7E7E", "0x840C1b6ce85bBFEbcFAd737514c0097B078a7E7E"],
         log: true,
     });
 }
