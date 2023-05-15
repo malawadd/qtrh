@@ -13,14 +13,12 @@ struct UserMetadata {
 }
 
 
-contract KtrhsHub is Managed, Ktrhs, Splits {
-    uint256 public constant MAX_DRIPS_RECEIVERS = _MAX_DRIPS_RECEIVERS;
+contract KtrhsHub is Managed, Ktrhs {
+    uint256 public constant MAX_KtrhS_RECEIVERS = _MAX_KtrhS_RECEIVERS;
     uint8 public constant AMT_PER_SEC_EXTRA_DECIMALS = _AMT_PER_SEC_EXTRA_DECIMALS;
     uint160 public constant AMT_PER_SEC_MULTIPLIER = _AMT_PER_SEC_MULTIPLIER;
-    uint256 public constant MAX_SPLITS_RECEIVERS = _MAX_SPLITS_RECEIVERS;
-    uint32 public constant TOTAL_SPLITS_WEIGHT = _TOTAL_SPLITS_WEIGHT;
     uint256 public constant DRIVER_ID_OFFSET = 224;
-    uint256 public constant MAX_TOTAL_BALANCE = _MAX_TOTAL_DRIPS_BALANCE;
+    uint256 public constant MAX_TOTAL_BALANCE = _MAX_TOTAL_KtrhS_BALANCE;
     uint32 public immutable cycleSecs;
     uint160 public immutable minAmtPerSec;
     bytes32 private immutable _ktrhsHubStorageSlot = _erc1967Slot("eip1967.ktrhsHub.storage");
@@ -38,7 +36,6 @@ contract KtrhsHub is Managed, Ktrhs, Splits {
 
     constructor(uint32 cycleSecs_)
         Ktrhs(cycleSecs_, _erc1967Slot("eip1967.ktrhs.storage"))
-        Splits(_erc1967Slot("eip1967.splits.storage"))
     {
         cycleSecs = Ktrhs._cycleSecs;
         minAmtPerSec = Ktrhs._minAmtPerSec;
@@ -128,7 +125,7 @@ contract KtrhsHub is Managed, Ktrhs, Splits {
     {
         uint256 assetId = _assetId(erc20);
         receivedAmt = Ktrhs._receiveKtrhs(userId, assetId, maxCycles);
-        if (receivedAmt > 0) Splits._addSplittable(userId, assetId, receivedAmt);
+        
     }
 
     function squeezeKtrhs(
@@ -140,7 +137,7 @@ contract KtrhsHub is Managed, Ktrhs, Splits {
     ) public whenNotPaused returns (uint128 amt) {
         uint256 assetId = _assetId(erc20);
         amt = Ktrhs._squeezeKtrhs(userId, assetId, senderId, historyHash, ktrhsHistory);
-        if (amt > 0) Splits._addSplittable(userId, assetId, amt);
+        
     }
 
     function squeezeKtrhsResult(
@@ -154,53 +151,6 @@ contract KtrhsHub is Managed, Ktrhs, Splits {
             Ktrhs._squeezeKtrhsResult(userId, _assetId(erc20), senderId, historyHash, ktrhsHistory);
     }
 
-    
-    function splittable(uint256 userId, IERC20 erc20) public view returns (uint128 amt) {
-        return Splits._splittable(userId, _assetId(erc20));
-    }
-
-    
-    function splitResult(uint256 userId, SplitsReceiver[] memory currReceivers, uint128 amount)
-        public
-        view
-        returns (uint128 collectableAmt, uint128 splitAmt)
-    {
-        return Splits._splitResult(userId, currReceivers, amount);
-    }
-
-    
-    function split(uint256 userId, IERC20 erc20, SplitsReceiver[] memory currReceivers)
-        public
-        whenNotPaused
-        returns (uint128 collectableAmt, uint128 splitAmt)
-    {
-        return Splits._split(userId, _assetId(erc20), currReceivers);
-    }
-
-    function collectable(uint256 userId, IERC20 erc20) public view returns (uint128 amt) {
-        return Splits._collectable(userId, _assetId(erc20));
-    }
-
-    
-    function collect(uint256 userId, IERC20 erc20)
-        public
-        whenNotPaused
-        onlyDriver(userId)
-        returns (uint128 amt)
-    {
-        amt = Splits._collect(userId, _assetId(erc20));
-        _decreaseTotalBalance(erc20, amt);
-    }
-
-    
-    function give(uint256 userId, uint256 receiver, IERC20 erc20, uint128 amt)
-        public
-        whenNotPaused
-        onlyDriver(userId)
-    {
-        _increaseTotalBalance(erc20, amt);
-        Splits._give(userId, receiver, _assetId(erc20), amt);
-    }
 
     
     function ktrhsState(uint256 userId, IERC20 erc20)
@@ -214,7 +164,7 @@ contract KtrhsHub is Managed, Ktrhs, Splits {
             uint32 maxEnd
         )
     {
-        return Ktrhs._ktrhsState(userId, _assetId(erc20));
+        return Ktrhs._KtrhsState(userId, _assetId(erc20));
     }
 
     function balanceAt(
