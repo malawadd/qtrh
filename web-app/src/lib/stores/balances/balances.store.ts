@@ -1,10 +1,10 @@
-import { constants, type SqueezedDripsEvent } from 'ktrh';
+import { constants, type SqueezedKtrhsEvent } from 'ktrh';
 import { get, readable, writable, type Readable } from 'svelte/store';
 import { estimateAccount, type AssetConfigEstimates, type StreamEstimate } from './utils/estimate';
 import tickStore from '../tick/tick.store';
 import type { Account, StreamId, UserId } from '../streams/types';
 import { decodeStreamId } from '../streams/methods/make-stream-id';
-import { getDripsHubClient, getSubgraphClient } from '$lib/utils/get-clients';
+import { getKtrhsHubClient, getSubgraphClient } from '$lib/utils/get-clients';
 import unreachable from '$lib/utils/unreachable';
 import relevantTokens from './utils/relevant_tokens';
 import fetchBalancesForTokens from './utils/fetch_balances_for_tokens';
@@ -18,7 +18,7 @@ interface Amount {
 interface AccountBalances {
   receivable?: Amount[];
   splittable?: Amount[];
-  squeezeHistory?: SqueezedDripsEvent[];
+  squeezeHistory?: SqueezedKtrhsEvent[];
   tokens: { [tokenAddress: string]: AssetConfigEstimates };
 }
 
@@ -98,7 +98,7 @@ export default (() => {
   async function updateSqueezeHistory(forUserId: string) {
     const subgraph = getSubgraphClient();
 
-    const squeezedEvents = (await subgraph.getSqueezedDripsEventsByUserId(forUserId)).sort(
+    const squeezedEvents = (await subgraph.getSqueezedKtrhsEventsByUserId(forUserId)).sort(
       (a, b) => Number(b.blockTimestamp) - Number(a.blockTimestamp),
     );
 
@@ -232,14 +232,14 @@ export default (() => {
   }
 
   /**
-   * The balances store internally fetches information about the current DripsHub cycle in order to
+   * The balances store internally fetches information about the current KtrhsHub cycle in order to
    * accurately estimate incoming balances. This function forces an update of the cycle information fetched on
    * when the store was initialized.
    */
   async function updateCycle() {
-    const dripsHubClient = await getDripsHubClient();
+    const ktrhsHubClient = await getKtrhsHubClient();
 
-    const cycleSecs = await dripsHubClient.cycleSecs();
+    const cycleSecs = await ktrhsHubClient.cycleSecs();
     const currentCycleSecs = Math.floor(new Date().getTime() / 1000) % cycleSecs;
     const currentCycleStart = new Date(new Date().getTime() - Number(currentCycleSecs) * 1000);
 
@@ -250,7 +250,7 @@ export default (() => {
   }
 
   function getFullSqueezeHistory() {
-    return Object.values(get(state).accounts).reduce<SqueezedDripsEvent[]>((acc, account) => {
+    return Object.values(get(state).accounts).reduce<SqueezedKtrhsEvent[]>((acc, account) => {
       return [...acc, ...(account.squeezeHistory ?? [])];
     }, []);
   }

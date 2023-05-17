@@ -1,4 +1,4 @@
-import { getDripsHubClient } from '$lib/utils/get-clients';
+import { getKtrhsHubClient } from '$lib/utils/get-clients';
 import type { ReceivableBalance, SplittableBalance } from 'ktrh';
 
 type BalanceType = 'receivable' | 'splittable';
@@ -14,7 +14,7 @@ export default async function fetchBalancesForTokens<T extends BalanceType>(
   tokens: Set<string>,
   userId: string,
 ): Promise<BalanceReturnType<T>[]> {
-  const client = await getDripsHubClient();
+  const client = await getKtrhsHubClient();
 
   const promises = Array.from(tokens).map((ta) =>
     balance === 'receivable'

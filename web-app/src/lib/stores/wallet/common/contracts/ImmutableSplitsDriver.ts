@@ -54,7 +54,7 @@ export interface ImmutableSplitsDriverInterface extends utils.Interface {
     "admin()": FunctionFragment;
     "allPausers()": FunctionFragment;
     "createSplits((uint256,uint32)[],(bytes32,bytes)[])": FunctionFragment;
-    "dripsHub()": FunctionFragment;
+    "ktrhsHub()": FunctionFragment;
     "driverId()": FunctionFragment;
     "grantPauser(address)": FunctionFragment;
     "implementation()": FunctionFragment;
@@ -79,7 +79,7 @@ export interface ImmutableSplitsDriverInterface extends utils.Interface {
       | "admin"
       | "allPausers"
       | "createSplits"
-      | "dripsHub"
+      | "ktrhsHub"
       | "driverId"
       | "grantPauser"
       | "implementation"
@@ -111,7 +111,7 @@ export interface ImmutableSplitsDriverInterface extends utils.Interface {
     functionFragment: "createSplits",
     values: [SplitsReceiverStruct[], UserMetadataStruct[]]
   ): string;
-  encodeFunctionData(functionFragment: "dripsHub", values?: undefined): string;
+  encodeFunctionData(functionFragment: "ktrhsHub", values?: undefined): string;
   encodeFunctionData(functionFragment: "driverId", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "grantPauser",
@@ -175,7 +175,7 @@ export interface ImmutableSplitsDriverInterface extends utils.Interface {
     functionFragment: "createSplits",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "dripsHub", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "ktrhsHub", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "driverId", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "grantPauser",
@@ -373,7 +373,7 @@ export interface ImmutableSplitsDriver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    dripsHub(overrides?: CallOverrides): Promise<[string]>;
+    ktrhsHub(overrides?: CallOverrides): Promise<[string]>;
 
     driverId(overrides?: CallOverrides): Promise<[number]>;
 
@@ -449,7 +449,7 @@ export interface ImmutableSplitsDriver extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  dripsHub(overrides?: CallOverrides): Promise<string>;
+  ktrhsHub(overrides?: CallOverrides): Promise<string>;
 
   driverId(overrides?: CallOverrides): Promise<number>;
 
@@ -521,7 +521,7 @@ export interface ImmutableSplitsDriver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    dripsHub(overrides?: CallOverrides): Promise<string>;
+    ktrhsHub(overrides?: CallOverrides): Promise<string>;
 
     driverId(overrides?: CallOverrides): Promise<number>;
 
@@ -661,7 +661,7 @@ export interface ImmutableSplitsDriver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    dripsHub(overrides?: CallOverrides): Promise<BigNumber>;
+    ktrhsHub(overrides?: CallOverrides): Promise<BigNumber>;
 
     driverId(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -736,7 +736,7 @@ export interface ImmutableSplitsDriver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    dripsHub(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    ktrhsHub(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     driverId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 

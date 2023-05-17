@@ -93,19 +93,19 @@ export default (() => {
   }
 
   /**
-   * Retrieve token information for a given token by its Drips `asset ID` (which is a
+   * Retrieve token information for a given token by its Ktrhs `asset ID` (which is a
    * hexadecimal representation of its address).
-   * @param dripsAssetId The drips asset ID of the token to retrieve information for.
+   * @param ktrhsAssetId The ktrhs asset ID of the token to retrieve information for.
    * @param chain The chain ID to retrieve the token information for. Defaults to the
    * chain the store is connected to.
    * @returns Token information, or undefined if not found.
    */
-  function getByDripsAssetId(dripsAssetId: string, chain = chainId): TokenInfoWrapper | undefined {
+  function getByKtrhsAssetId(ktrhsAssetId: string, chain = chainId): TokenInfoWrapper | undefined {
     const tokens = get(tokenList);
     assert(tokens, 'Store must be connected first');
 
     return tokens.find((t) => {
-      const assetAddress = Utils.Asset.getAddressFromId(BigInt(dripsAssetId));
+      const assetAddress = Utils.Asset.getAddressFromId(BigInt(ktrhsAssetId));
 
       const addressMatch = t.info.address.toLowerCase() === assetAddress.toLowerCase();
       const chainIdMatch = t.info.chainId === chain;
@@ -203,7 +203,7 @@ export default (() => {
     disconnect,
     getByAddress,
     getBySymbol,
-    getByDripsAssetId,
+    getByKtrhsAssetId,
     addCustomToken,
     removeCustomToken,
     setCustomTokenBanStatus,

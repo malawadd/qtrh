@@ -1,5 +1,5 @@
 import uniswapTokenList from '@uniswap/default-token-list';
-import { Utils } from 'radicle-drips';
+import { Utils } from 'radicle-ktrhs';
 import { get } from 'svelte/store';
 import tokens from '.';
 
@@ -38,7 +38,7 @@ describe('tokens store', () => {
     );
   });
 
-  it('finds tokens by address, symbol or drips asset ID', () => {
+  it('finds tokens by address, symbol or ktrhs asset ID', () => {
     tokens.connect(1);
     expect(tokens.getBySymbol('RAD')?.info.address).toBe(
       '0x31c8EAcBFFdD875c74b94b077895Bd78CF1E64A3',
@@ -47,7 +47,7 @@ describe('tokens store', () => {
       'RAD',
     );
     expect(
-      tokens.getByDripsAssetId(
+      tokens.getByKtrhsAssetId(
         Utils.Asset.getIdFromAddress('0x31c8EAcBFFdD875c74b94b077895Bd78CF1E64A3').toString(),
       )?.info.address,
     ).toBe('0x31c8EAcBFFdD875c74b94b077895Bd78CF1E64A3');

@@ -10,8 +10,8 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "contract DripsHub",
-        name: "_dripsHub",
+        internalType: "contract KtrhsHub",
+        name: "_ktrhsHub",
         type: "address",
       },
       {
@@ -369,10 +369,10 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "dripsHub",
+    name: "ktrhsHub",
     outputs: [
       {
-        internalType: "contract DripsHub",
+        internalType: "contract KtrhsHub",
         name: "",
         type: "address",
       },
@@ -949,12 +949,12 @@ const _abi = [
             type: "uint256",
           },
           {
-            internalType: "DripsConfig",
+            internalType: "KtrhsConfig",
             name: "config",
             type: "uint256",
           },
         ],
-        internalType: "struct DripsReceiver[]",
+        internalType: "struct KtrhsReceiver[]",
         name: "currReceivers",
         type: "tuple[]",
       },
@@ -971,12 +971,12 @@ const _abi = [
             type: "uint256",
           },
           {
-            internalType: "DripsConfig",
+            internalType: "KtrhsConfig",
             name: "config",
             type: "uint256",
           },
         ],
-        internalType: "struct DripsReceiver[]",
+        internalType: "struct KtrhsReceiver[]",
         name: "newReceivers",
         type: "tuple[]",
       },
@@ -996,7 +996,7 @@ const _abi = [
         type: "address",
       },
     ],
-    name: "setDrips",
+    name: "setKtrhs",
     outputs: [
       {
         internalType: "int128",

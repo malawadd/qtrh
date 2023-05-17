@@ -22,20 +22,10 @@
 </script>
 
 <svelte:head>
-  <meta property="og:title" content="Drips" />
+  <meta property="og:title" content="Ktrhs" />
   <meta property="og:image" content={`https://${$page.url.host}/assets/social-share.png`} />
-  <meta
-    property="og:description"
-    content="A Web3 toolkit that enables FOSS developers to raise and manage funds by the second, without any platform fees."
-  />
-  <meta name="twitter:title" content="Drips" />
-  <meta
-    name="twitter:description"
-    content="A Web3 toolkit that enables FOSS developers to raise and manage funds by the second, without any platform fees."
-  />
-  <meta name="twitter:image" content={`https://${$page.url.host}/assets/social-share.png`} />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@dripsnetwork" />
+  
+ 
 </svelte:head>
 
 <div class="main" data-uifont="inter" data-theme={$themeStore.currentTheme}>

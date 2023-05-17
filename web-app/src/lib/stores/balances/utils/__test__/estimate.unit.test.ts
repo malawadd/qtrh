@@ -1,4 +1,4 @@
-import { Utils } from 'radicle-drips';
+import { Utils } from 'radicle-ktrhs';
 import { estimateAssetConfig } from '../estimate';
 
 const MOCK_USER = {
@@ -12,33 +12,33 @@ const MOCK_USER = {
 };
 
 const mockStream = ({
-  dripId,
+  ktrhId,
   paused,
   amountPerSecond,
   durationSeconds,
   startTimestamp,
 }: {
-  dripId: number;
+  ktrhId: number;
   paused: boolean;
   amountPerSecond: bigint;
   durationSeconds: number;
   startTimestamp: number;
 }) => ({
-  id: `${MOCK_USER.userId}-0x00-${dripId}`,
+  id: `${MOCK_USER.userId}-0x00-${ktrhId}`,
   sender: MOCK_USER,
   receiver: MOCK_USER,
-  dripsConfig: {
-    raw: Utils.DripsReceiverConfiguration.toUint256({
+  ktrhsConfig: {
+    raw: Utils.KtrhsReceiverConfiguration.toUint256({
       amountPerSec: amountPerSecond,
       start: BigInt(startTimestamp),
       duration: BigInt(durationSeconds),
-      dripId: BigInt(dripId),
+      ktrhId: BigInt(ktrhId),
     }),
     amountPerSecond: {
       tokenAddress: '0x00',
       amount: amountPerSecond,
     },
-    dripId: String(dripId),
+    ktrhId: String(ktrhId),
     startDate: startTimestamp === 0 ? undefined : new Date(startTimestamp * 1000),
     durationSeconds: durationSeconds === 0 ? undefined : durationSeconds,
   },
@@ -64,7 +64,7 @@ const mockAssetConfigHistoryItem = ({
   },
   streams: streams.map((stream) => ({
     streamId: stream.id,
-    dripsConfig: stream.paused ? undefined : stream.dripsConfig,
+    ktrhsConfig: stream.paused ? undefined : stream.ktrhsConfig,
     managed: stream.managed,
     receiver: stream.receiver,
   })),
@@ -98,7 +98,7 @@ describe('estimate.ts', () => {
       vi.setSystemTime(10 * 1000);
 
       const activeMockStream = mockStream({
-        dripId: 1,
+        ktrhId: 1,
         paused: false,
         amountPerSecond: 100n,
         durationSeconds: 0,
@@ -135,7 +135,7 @@ describe('estimate.ts', () => {
       vi.setSystemTime(10 * 1000);
 
       const activeMockStream = mockStream({
-        dripId: 1,
+        ktrhId: 1,
         paused: false,
         amountPerSecond: 100n,
         durationSeconds: 0,
@@ -183,7 +183,7 @@ describe('estimate.ts', () => {
       vi.setSystemTime(10 * 1000);
 
       const activeMockStream = mockStream({
-        dripId: 1,
+        ktrhId: 1,
         paused: false,
         amountPerSecond: 50n,
         durationSeconds: 0,
@@ -220,7 +220,7 @@ describe('estimate.ts', () => {
       vi.setSystemTime(10 * 1000);
 
       const streamWithStartDate = mockStream({
-        dripId: 1,
+        ktrhId: 1,
         paused: false,
         amountPerSecond: 100n,
         durationSeconds: 0,
@@ -257,7 +257,7 @@ describe('estimate.ts', () => {
       vi.setSystemTime(20 * 1000);
 
       const streamWithDurationAndStartDate = mockStream({
-        dripId: 1,
+        ktrhId: 1,
         paused: false,
         amountPerSecond: 100n,
         durationSeconds: 5,
@@ -295,7 +295,7 @@ describe('estimate.ts', () => {
     vi.setSystemTime(10 * 1000);
 
     const activeMockStream = mockStream({
-      dripId: 1,
+      ktrhId: 1,
       paused: false,
       amountPerSecond: 100n,
       durationSeconds: 0,

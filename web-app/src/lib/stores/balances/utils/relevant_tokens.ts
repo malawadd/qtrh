@@ -10,8 +10,8 @@ export default async function relevantTokens(
   let assetIds: string[];
 
   if (forBalance === 'receivable') {
-    assetIds = (await subgraph.getDripsReceiverSeenEventsByReceiverId(userId)).map((e) =>
-      Utils.Asset.getAddressFromId(e.dripsSetEvent.assetId),
+    assetIds = (await subgraph.getKtrhsReceiverSeenEventsByReceiverId(userId)).map((e) =>
+      Utils.Asset.getAddressFromId(e.ktrhsSetEvent.assetId),
     );
   } else {
     const events = await Promise.all([

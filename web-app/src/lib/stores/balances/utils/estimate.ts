@@ -7,7 +7,7 @@ import type {
   User,
 } from '$lib/stores/streams/types';
 import { unwrapIdItems } from '$lib/utils/wrap-unwrap-id-item';
-import type { SqueezedDripsEvent } from 'ktrh';
+import type { SqueezedKtrhsEvent } from 'ktrh';
 
 type Millis = number;
 
@@ -50,7 +50,7 @@ type AccountEstimate = { [tokenAddress: string]: AssetConfigEstimates };
 export function estimateAccount(
   account: Account,
   currentCycle: Cycle,
-  excludingSqueezes: SqueezedDripsEvent[] = [],
+  excludingSqueezes: SqueezedKtrhsEvent[] = [],
 ): AccountEstimate {
   return Object.fromEntries(
     account.assetConfigs.map((assetConfig) => [
@@ -64,7 +64,7 @@ function buildAssetConfigEstimates(
   assetConfig: AssetConfig,
   currentCycle: Cycle,
   user: User,
-  excludingSqueezes: SqueezedDripsEvent[],
+  excludingSqueezes: SqueezedKtrhsEvent[],
 ): AssetConfigEstimates {
   /*
     TODO: Avoid processing the current cycle twice by bounding totalEstimate to before the current cycle,
@@ -95,7 +95,7 @@ export function estimateAssetConfig(
   assetConfig: AssetConfig,
   window: TimeWindow,
   user: User,
-  excludingSqueezes: SqueezedDripsEvent[] = [],
+  excludingSqueezes: SqueezedKtrhsEvent[] = [],
 ): AssetConfigEstimate {
   // Filter out any history items not relevant to the current time window.
   const relevantHistoryItems = assetConfig.history.filter((hi) => {
@@ -166,7 +166,7 @@ function estimateHistoryItem(
   nextHistoryItem: AssetConfigHistoryItem,
   tokenAddress: string,
   sender: User,
-  excludingSqueezes: SqueezedDripsEvent[],
+  excludingSqueezes: SqueezedKtrhsEvent[],
 ): AssetConfigEstimate {
   const streamEstimates = historyItem.streams.map((receiver) => {
     const estimate = streamedByStream(
@@ -207,14 +207,14 @@ function streamedByStream(
   receiver: Receiver,
   sender: User,
   historyItem: AssetConfigHistoryItem,
-  excludingSqueezes: SqueezedDripsEvent[],
+  excludingSqueezes: SqueezedKtrhsEvent[],
   nextHistoryItem?: AssetConfigHistoryItem,
 ): {
   streamed: bigint;
   currentAmountPerSecond: bigint;
 } {
-  // Undefined dripsConfig means the stream was paused.
-  if (!receiver.dripsConfig) {
+  // Undefined ktrhsConfig means the stream was paused.
+  if (!receiver.ktrhsConfig) {
     return {
       streamed: 0n,
       currentAmountPerSecond: 0n,
@@ -232,7 +232,7 @@ function streamedByStream(
     : undefined;
   const timestamp: Millis = timestampDate.getTime();
 
-  const { durationSeconds, amountPerSecond, startDate } = receiver.dripsConfig;
+  const { durationSeconds, amountPerSecond, startDate } = receiver.ktrhsConfig;
 
   const duration: Millis | undefined = durationSeconds ? durationSeconds * 1000 : undefined;
   const start: Millis = startDate ? startDate.getTime() : timestamp;
@@ -240,7 +240,7 @@ function streamedByStream(
   const squeezedAtBlockTimestamp = excludingSqueezes.find(
     (squeezeEvent) =>
       squeezeEvent.senderId === sender.userId &&
-      squeezeEvent.dripsHistoryHashes.includes(historyItem.historyHash),
+      squeezeEvent.ktrhsHistoryHashes.includes(historyItem.historyHash),
   )?.blockTimestamp;
   const squeezedAt: Millis | undefined = squeezedAtBlockTimestamp
     ? Number(squeezedAtBlockTimestamp) * 1000
