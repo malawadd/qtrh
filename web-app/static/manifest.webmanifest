@@ -1,6 +1,6 @@
 {
-  "short_name": "Drips",
-  "name": "Drips",
+  "short_name": "Ktrhs",
+  "name": "Ktrhs",
   "id": "/app?homescreen=1",
   "start_url": "/app?homescreen=1",
   "background_color": "#0E171F",
@@ -23,7 +23,7 @@
     {
       "name": "Settings",
       "short_name": "Settings",
-      "description": "Adjust settings for the Drips app.",
+      "description": "Adjust settings for the Ktrhs app.",
       "url": "/app/settings",
       "icons": [
         {
