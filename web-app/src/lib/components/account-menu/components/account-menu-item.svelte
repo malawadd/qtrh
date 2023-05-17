@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ChevronRight from 'radicle-design-system/icons/ChevronRight.svelte';
+  import ChevronRight from 'design-system/icons/ChevronRight.svelte';
   import type { SvelteComponent } from 'svelte';
 
   export let disabled = false;
