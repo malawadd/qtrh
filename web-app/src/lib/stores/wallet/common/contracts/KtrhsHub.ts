@@ -28,12 +28,12 @@ import type {
   PromiseOrValue,
 } from "./common";
 
-export type DripsReceiverStruct = {
+export type KtrhsReceiverStruct = {
   userId: PromiseOrValue<BigNumberish>;
   config: PromiseOrValue<BigNumberish>;
 };
 
-export type DripsReceiverStructOutput = [BigNumber, BigNumber] & {
+export type KtrhsReceiverStructOutput = [BigNumber, BigNumber] & {
   userId: BigNumber;
   config: BigNumber;
 };
@@ -58,31 +58,31 @@ export type SplitsReceiverStructOutput = [BigNumber, number] & {
   weight: number;
 };
 
-export type DripsHistoryStruct = {
-  dripsHash: PromiseOrValue<BytesLike>;
-  receivers: DripsReceiverStruct[];
+export type KtrhsHistoryStruct = {
+  ktrhsHash: PromiseOrValue<BytesLike>;
+  receivers: KtrhsReceiverStruct[];
   updateTime: PromiseOrValue<BigNumberish>;
   maxEnd: PromiseOrValue<BigNumberish>;
 };
 
-export type DripsHistoryStructOutput = [
+export type KtrhsHistoryStructOutput = [
   string,
-  DripsReceiverStructOutput[],
+  KtrhsReceiverStructOutput[],
   number,
   number
 ] & {
-  dripsHash: string;
-  receivers: DripsReceiverStructOutput[];
+  ktrhsHash: string;
+  receivers: KtrhsReceiverStructOutput[];
   updateTime: number;
   maxEnd: number;
 };
 
-export interface DripsHubInterface extends utils.Interface {
+export interface KtrhsHubInterface extends utils.Interface {
   functions: {
     "AMT_PER_SEC_EXTRA_DECIMALS()": FunctionFragment;
     "AMT_PER_SEC_MULTIPLIER()": FunctionFragment;
     "DRIVER_ID_OFFSET()": FunctionFragment;
-    "MAX_DRIPS_RECEIVERS()": FunctionFragment;
+    "MAX_KTRHS_RECEIVERS()": FunctionFragment;
     "MAX_SPLITS_RECEIVERS()": FunctionFragment;
     "MAX_TOTAL_BALANCE()": FunctionFragment;
     "TOTAL_SPLITS_WEIGHT()": FunctionFragment;
@@ -93,13 +93,13 @@ export interface DripsHubInterface extends utils.Interface {
     "collect(uint256,address)": FunctionFragment;
     "collectable(uint256,address)": FunctionFragment;
     "cycleSecs()": FunctionFragment;
-    "dripsState(uint256,address)": FunctionFragment;
+    "ktrhsState(uint256,address)": FunctionFragment;
     "driverAddress(uint32)": FunctionFragment;
     "emitUserMetadata(uint256,(bytes32,bytes)[])": FunctionFragment;
     "give(uint256,uint256,address,uint128)": FunctionFragment;
     "grantPauser(address)": FunctionFragment;
-    "hashDrips((uint256,uint256)[])": FunctionFragment;
-    "hashDripsHistory(bytes32,bytes32,uint32,uint32)": FunctionFragment;
+    "hashKtrhs((uint256,uint256)[])": FunctionFragment;
+    "hashKtrhsHistory(bytes32,bytes32,uint32,uint32)": FunctionFragment;
     "hashSplits((uint256,uint32)[])": FunctionFragment;
     "implementation()": FunctionFragment;
     "isPaused()": FunctionFragment;
@@ -110,20 +110,20 @@ export interface DripsHubInterface extends utils.Interface {
     "proposeNewAdmin(address)": FunctionFragment;
     "proposedAdmin()": FunctionFragment;
     "proxiableUUID()": FunctionFragment;
-    "receivableDripsCycles(uint256,address)": FunctionFragment;
-    "receiveDrips(uint256,address,uint32)": FunctionFragment;
-    "receiveDripsResult(uint256,address,uint32)": FunctionFragment;
+    "receivableKtrhsCycles(uint256,address)": FunctionFragment;
+    "receiveKtrhs(uint256,address,uint32)": FunctionFragment;
+    "receiveKtrhsResult(uint256,address,uint32)": FunctionFragment;
     "registerDriver(address)": FunctionFragment;
     "renounceAdmin()": FunctionFragment;
     "revokePauser(address)": FunctionFragment;
-    "setDrips(uint256,address,(uint256,uint256)[],int128,(uint256,uint256)[],uint32,uint32)": FunctionFragment;
+    "setKtrhs(uint256,address,(uint256,uint256)[],int128,(uint256,uint256)[],uint32,uint32)": FunctionFragment;
     "setSplits(uint256,(uint256,uint32)[])": FunctionFragment;
     "split(uint256,address,(uint256,uint32)[])": FunctionFragment;
     "splitResult(uint256,(uint256,uint32)[],uint128)": FunctionFragment;
     "splitsHash(uint256)": FunctionFragment;
     "splittable(uint256,address)": FunctionFragment;
-    "squeezeDrips(uint256,address,uint256,bytes32,(bytes32,(uint256,uint256)[],uint32,uint32)[])": FunctionFragment;
-    "squeezeDripsResult(uint256,address,uint256,bytes32,(bytes32,(uint256,uint256)[],uint32,uint32)[])": FunctionFragment;
+    "squeezeKtrhs(uint256,address,uint256,bytes32,(bytes32,(uint256,uint256)[],uint32,uint32)[])": FunctionFragment;
+    "squeezeKtrhsResult(uint256,address,uint256,bytes32,(bytes32,(uint256,uint256)[],uint32,uint32)[])": FunctionFragment;
     "totalBalance(address)": FunctionFragment;
     "unpause()": FunctionFragment;
     "updateDriverAddress(uint32,address)": FunctionFragment;
@@ -137,7 +137,7 @@ export interface DripsHubInterface extends utils.Interface {
       | "AMT_PER_SEC_EXTRA_DECIMALS"
       | "AMT_PER_SEC_MULTIPLIER"
       | "DRIVER_ID_OFFSET"
-      | "MAX_DRIPS_RECEIVERS"
+      | "MAX_KTRHS_RECEIVERS"
       | "MAX_SPLITS_RECEIVERS"
       | "MAX_TOTAL_BALANCE"
       | "TOTAL_SPLITS_WEIGHT"
@@ -148,13 +148,13 @@ export interface DripsHubInterface extends utils.Interface {
       | "collect"
       | "collectable"
       | "cycleSecs"
-      | "dripsState"
+      | "ktrhsState"
       | "driverAddress"
       | "emitUserMetadata"
       | "give"
       | "grantPauser"
-      | "hashDrips"
-      | "hashDripsHistory"
+      | "hashKtrhs"
+      | "hashKtrhsHistory"
       | "hashSplits"
       | "implementation"
       | "isPaused"
@@ -165,20 +165,20 @@ export interface DripsHubInterface extends utils.Interface {
       | "proposeNewAdmin"
       | "proposedAdmin"
       | "proxiableUUID"
-      | "receivableDripsCycles"
-      | "receiveDrips"
-      | "receiveDripsResult"
+      | "receivableKtrhsCycles"
+      | "receiveKtrhs"
+      | "receiveKtrhsResult"
       | "registerDriver"
       | "renounceAdmin"
       | "revokePauser"
-      | "setDrips"
+      | "setKtrhs"
       | "setSplits"
       | "split"
       | "splitResult"
       | "splitsHash"
       | "splittable"
-      | "squeezeDrips"
-      | "squeezeDripsResult"
+      | "squeezeKtrhs"
+      | "squeezeKtrhsResult"
       | "totalBalance"
       | "unpause"
       | "updateDriverAddress"
@@ -200,7 +200,7 @@ export interface DripsHubInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "MAX_DRIPS_RECEIVERS",
+    functionFragment: "MAX_KTRHS_RECEIVERS",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -229,7 +229,7 @@ export interface DripsHubInterface extends utils.Interface {
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<string>,
-      DripsReceiverStruct[],
+      KtrhsReceiverStruct[],
       PromiseOrValue<BigNumberish>
     ]
   ): string;
@@ -243,7 +243,7 @@ export interface DripsHubInterface extends utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "cycleSecs", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "dripsState",
+    functionFragment: "ktrhsState",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
@@ -268,11 +268,11 @@ export interface DripsHubInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "hashDrips",
-    values: [DripsReceiverStruct[]]
+    functionFragment: "hashKtrhs",
+    values: [KtrhsReceiverStruct[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "hashDripsHistory",
+    functionFragment: "hashKtrhsHistory",
     values: [
       PromiseOrValue<BytesLike>,
       PromiseOrValue<BytesLike>,
@@ -315,11 +315,11 @@ export interface DripsHubInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "receivableDripsCycles",
+    functionFragment: "receivableKtrhsCycles",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "receiveDrips",
+    functionFragment: "receiveKtrhs",
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<string>,
@@ -327,7 +327,7 @@ export interface DripsHubInterface extends utils.Interface {
     ]
   ): string;
   encodeFunctionData(
-    functionFragment: "receiveDripsResult",
+    functionFragment: "receiveKtrhsResult",
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<string>,
@@ -347,13 +347,13 @@ export interface DripsHubInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "setDrips",
+    functionFragment: "setKtrhs",
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<string>,
-      DripsReceiverStruct[],
+      KtrhsReceiverStruct[],
       PromiseOrValue<BigNumberish>,
-      DripsReceiverStruct[],
+      KtrhsReceiverStruct[],
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BigNumberish>
     ]
@@ -387,23 +387,23 @@ export interface DripsHubInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "squeezeDrips",
+    functionFragment: "squeezeKtrhs",
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<string>,
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BytesLike>,
-      DripsHistoryStruct[]
+      KtrhsHistoryStruct[]
     ]
   ): string;
   encodeFunctionData(
-    functionFragment: "squeezeDripsResult",
+    functionFragment: "squeezeKtrhsResult",
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<string>,
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BytesLike>,
-      DripsHistoryStruct[]
+      KtrhsHistoryStruct[]
     ]
   ): string;
   encodeFunctionData(
@@ -445,7 +445,7 @@ export interface DripsHubInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "MAX_DRIPS_RECEIVERS",
+    functionFragment: "MAX_KTRHS_RECEIVERS",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -473,7 +473,7 @@ export interface DripsHubInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "cycleSecs", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "dripsState", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "ktrhsState", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "driverAddress",
     data: BytesLike
@@ -487,9 +487,9 @@ export interface DripsHubInterface extends utils.Interface {
     functionFragment: "grantPauser",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "hashDrips", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "hashKtrhs", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "hashDripsHistory",
+    functionFragment: "hashKtrhsHistory",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "hashSplits", data: BytesLike): Result;
@@ -521,15 +521,15 @@ export interface DripsHubInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "receivableDripsCycles",
+    functionFragment: "receivableKtrhsCycles",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "receiveDrips",
+    functionFragment: "receiveKtrhs",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "receiveDripsResult",
+    functionFragment: "receiveKtrhsResult",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -544,7 +544,7 @@ export interface DripsHubInterface extends utils.Interface {
     functionFragment: "revokePauser",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "setDrips", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setKtrhs", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setSplits", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "split", data: BytesLike): Result;
   decodeFunctionResult(
@@ -554,11 +554,11 @@ export interface DripsHubInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "splitsHash", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "splittable", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "squeezeDrips",
+    functionFragment: "squeezeKtrhs",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "squeezeDripsResult",
+    functionFragment: "squeezeKtrhsResult",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -582,8 +582,8 @@ export interface DripsHubInterface extends utils.Interface {
     "BeaconUpgraded(address)": EventFragment;
     "Collectable(uint256,uint256,uint128)": EventFragment;
     "Collected(uint256,uint256,uint128)": EventFragment;
-    "DripsReceiverSeen(bytes32,uint256,uint256)": EventFragment;
-    "DripsSet(uint256,uint256,bytes32,bytes32,uint128,uint32)": EventFragment;
+    "KtrhsReceiverSeen(bytes32,uint256,uint256)": EventFragment;
+    "KtrhsSet(uint256,uint256,bytes32,bytes32,uint128,uint32)": EventFragment;
     "DriverAddressUpdated(uint32,address,address)": EventFragment;
     "DriverRegistered(uint32,address)": EventFragment;
     "Given(uint256,uint256,uint256,uint128)": EventFragment;
@@ -591,11 +591,11 @@ export interface DripsHubInterface extends utils.Interface {
     "Paused(address)": EventFragment;
     "PauserGranted(address,address)": EventFragment;
     "PauserRevoked(address,address)": EventFragment;
-    "ReceivedDrips(uint256,uint256,uint128,uint32)": EventFragment;
+    "ReceivedKtrhs(uint256,uint256,uint128,uint32)": EventFragment;
     "Split(uint256,uint256,uint256,uint128)": EventFragment;
     "SplitsReceiverSeen(bytes32,uint256,uint32)": EventFragment;
     "SplitsSet(uint256,bytes32)": EventFragment;
-    "SqueezedDrips(uint256,uint256,uint256,uint128,bytes32[])": EventFragment;
+    "SqueezedKtrhs(uint256,uint256,uint256,uint128,bytes32[])": EventFragment;
     "Unpaused(address)": EventFragment;
     "Upgraded(address)": EventFragment;
     "UserMetadataEmitted(uint256,bytes32,bytes)": EventFragment;
@@ -606,8 +606,8 @@ export interface DripsHubInterface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "BeaconUpgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Collectable"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Collected"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "DripsReceiverSeen"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "DripsSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "KtrhsReceiverSeen"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "KtrhsSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "DriverAddressUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "DriverRegistered"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Given"): EventFragment;
@@ -615,11 +615,11 @@ export interface DripsHubInterface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "PauserGranted"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "PauserRevoked"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ReceivedDrips"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ReceivedKtrhs"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Split"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SplitsReceiverSeen"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SplitsSet"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "SqueezedDrips"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "SqueezedKtrhs"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Upgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "UserMetadataEmitted"): EventFragment;
@@ -671,33 +671,33 @@ export type CollectedEvent = TypedEvent<
 
 export type CollectedEventFilter = TypedEventFilter<CollectedEvent>;
 
-export interface DripsReceiverSeenEventObject {
+export interface KtrhsReceiverSeenEventObject {
   receiversHash: string;
   userId: BigNumber;
   config: BigNumber;
 }
-export type DripsReceiverSeenEvent = TypedEvent<
+export type KtrhsReceiverSeenEvent = TypedEvent<
   [string, BigNumber, BigNumber],
-  DripsReceiverSeenEventObject
+  KtrhsReceiverSeenEventObject
 >;
 
-export type DripsReceiverSeenEventFilter =
-  TypedEventFilter<DripsReceiverSeenEvent>;
+export type KtrhsReceiverSeenEventFilter =
+  TypedEventFilter<KtrhsReceiverSeenEvent>;
 
-export interface DripsSetEventObject {
+export interface KtrhsSetEventObject {
   userId: BigNumber;
   assetId: BigNumber;
   receiversHash: string;
-  dripsHistoryHash: string;
+  ktrhsHistoryHash: string;
   balance: BigNumber;
   maxEnd: number;
 }
-export type DripsSetEvent = TypedEvent<
+export type KtrhsSetEvent = TypedEvent<
   [BigNumber, BigNumber, string, string, BigNumber, number],
-  DripsSetEventObject
+  KtrhsSetEventObject
 >;
 
-export type DripsSetEventFilter = TypedEventFilter<DripsSetEvent>;
+export type KtrhsSetEventFilter = TypedEventFilter<KtrhsSetEvent>;
 
 export interface DriverAddressUpdatedEventObject {
   driverId: number;
@@ -778,18 +778,18 @@ export type PauserRevokedEvent = TypedEvent<
 
 export type PauserRevokedEventFilter = TypedEventFilter<PauserRevokedEvent>;
 
-export interface ReceivedDripsEventObject {
+export interface ReceivedKtrhsEventObject {
   userId: BigNumber;
   assetId: BigNumber;
   amt: BigNumber;
   receivableCycles: number;
 }
-export type ReceivedDripsEvent = TypedEvent<
+export type ReceivedKtrhsEvent = TypedEvent<
   [BigNumber, BigNumber, BigNumber, number],
-  ReceivedDripsEventObject
+  ReceivedKtrhsEventObject
 >;
 
-export type ReceivedDripsEventFilter = TypedEventFilter<ReceivedDripsEvent>;
+export type ReceivedKtrhsEventFilter = TypedEventFilter<ReceivedKtrhsEvent>;
 
 export interface SplitEventObject {
   userId: BigNumber;
@@ -828,19 +828,19 @@ export type SplitsSetEvent = TypedEvent<
 
 export type SplitsSetEventFilter = TypedEventFilter<SplitsSetEvent>;
 
-export interface SqueezedDripsEventObject {
+export interface SqueezedKtrhsEventObject {
   userId: BigNumber;
   assetId: BigNumber;
   senderId: BigNumber;
   amt: BigNumber;
-  dripsHistoryHashes: string[];
+  ktrhsHistoryHashes: string[];
 }
-export type SqueezedDripsEvent = TypedEvent<
+export type SqueezedKtrhsEvent = TypedEvent<
   [BigNumber, BigNumber, BigNumber, BigNumber, string[]],
-  SqueezedDripsEventObject
+  SqueezedKtrhsEventObject
 >;
 
-export type SqueezedDripsEventFilter = TypedEventFilter<SqueezedDripsEvent>;
+export type SqueezedKtrhsEventFilter = TypedEventFilter<SqueezedKtrhsEvent>;
 
 export interface UnpausedEventObject {
   pauser: string;
@@ -881,12 +881,12 @@ export type WithdrawnEvent = TypedEvent<
 
 export type WithdrawnEventFilter = TypedEventFilter<WithdrawnEvent>;
 
-export interface DripsHub extends BaseContract {
+export interface KtrhsHub extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: DripsHubInterface;
+  interface: KtrhsHubInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -914,7 +914,7 @@ export interface DripsHub extends BaseContract {
 
     DRIVER_ID_OFFSET(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    MAX_DRIPS_RECEIVERS(overrides?: CallOverrides): Promise<[BigNumber]>;
+    MAX_KTRHS_RECEIVERS(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     MAX_SPLITS_RECEIVERS(overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -935,7 +935,7 @@ export interface DripsHub extends BaseContract {
     balanceAt(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       timestamp: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { balance: BigNumber }>;
@@ -954,14 +954,14 @@ export interface DripsHub extends BaseContract {
 
     cycleSecs(overrides?: CallOverrides): Promise<[number]>;
 
-    dripsState(
+    ktrhsState(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<
       [string, string, number, BigNumber, number] & {
-        dripsHash: string;
-        dripsHistoryHash: string;
+        ktrhsHash: string;
+        ktrhsHistoryHash: string;
         updateTime: number;
         balance: BigNumber;
         maxEnd: number;
@@ -992,18 +992,18 @@ export interface DripsHub extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    hashDrips(
-      receivers: DripsReceiverStruct[],
+    hashKtrhs(
+      receivers: KtrhsReceiverStruct[],
       overrides?: CallOverrides
-    ): Promise<[string] & { dripsHash: string }>;
+    ): Promise<[string] & { ktrhsHash: string }>;
 
-    hashDripsHistory(
-      oldDripsHistoryHash: PromiseOrValue<BytesLike>,
-      dripsHash: PromiseOrValue<BytesLike>,
+    hashKtrhsHistory(
+      oldKtrhsHistoryHash: PromiseOrValue<BytesLike>,
+      ktrhsHash: PromiseOrValue<BytesLike>,
       updateTime: PromiseOrValue<BigNumberish>,
       maxEnd: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<[string] & { dripsHistoryHash: string }>;
+    ): Promise<[string] & { ktrhsHistoryHash: string }>;
 
     hashSplits(
       receivers: SplitsReceiverStruct[],
@@ -1038,20 +1038,20 @@ export interface DripsHub extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<[string]>;
 
-    receivableDripsCycles(
+    receivableKtrhsCycles(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[number] & { cycles: number }>;
 
-    receiveDrips(
+    receiveKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    receiveDripsResult(
+    receiveKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
@@ -1072,12 +1072,12 @@ export interface DripsHub extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    setDrips(
+    setKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       balanceDelta: PromiseOrValue<BigNumberish>,
-      newReceivers: DripsReceiverStruct[],
+      newReceivers: KtrhsReceiverStruct[],
       maxEndHint1: PromiseOrValue<BigNumberish>,
       maxEndHint2: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1119,21 +1119,21 @@ export interface DripsHub extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { amt: BigNumber }>;
 
-    squeezeDrips(
+    squeezeKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    squeezeDripsResult(
+    squeezeKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { amt: BigNumber }>;
 
@@ -1177,7 +1177,7 @@ export interface DripsHub extends BaseContract {
 
   DRIVER_ID_OFFSET(overrides?: CallOverrides): Promise<BigNumber>;
 
-  MAX_DRIPS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
+  MAX_KTRHS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
 
   MAX_SPLITS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1196,7 +1196,7 @@ export interface DripsHub extends BaseContract {
   balanceAt(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
-    currReceivers: DripsReceiverStruct[],
+    currReceivers: KtrhsReceiverStruct[],
     timestamp: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -1215,14 +1215,14 @@ export interface DripsHub extends BaseContract {
 
   cycleSecs(overrides?: CallOverrides): Promise<number>;
 
-  dripsState(
+  ktrhsState(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<
     [string, string, number, BigNumber, number] & {
-      dripsHash: string;
-      dripsHistoryHash: string;
+      ktrhsHash: string;
+      ktrhsHistoryHash: string;
       updateTime: number;
       balance: BigNumber;
       maxEnd: number;
@@ -1253,14 +1253,14 @@ export interface DripsHub extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  hashDrips(
-    receivers: DripsReceiverStruct[],
+  hashKtrhs(
+    receivers: KtrhsReceiverStruct[],
     overrides?: CallOverrides
   ): Promise<string>;
 
-  hashDripsHistory(
-    oldDripsHistoryHash: PromiseOrValue<BytesLike>,
-    dripsHash: PromiseOrValue<BytesLike>,
+  hashKtrhsHistory(
+    oldKtrhsHistoryHash: PromiseOrValue<BytesLike>,
+    ktrhsHash: PromiseOrValue<BytesLike>,
     updateTime: PromiseOrValue<BigNumberish>,
     maxEnd: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -1297,20 +1297,20 @@ export interface DripsHub extends BaseContract {
 
   proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
-  receivableDripsCycles(
+  receivableKtrhsCycles(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<number>;
 
-  receiveDrips(
+  receiveKtrhs(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
     maxCycles: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  receiveDripsResult(
+  receiveKtrhsResult(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
     maxCycles: PromiseOrValue<BigNumberish>,
@@ -1331,12 +1331,12 @@ export interface DripsHub extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  setDrips(
+  setKtrhs(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
-    currReceivers: DripsReceiverStruct[],
+    currReceivers: KtrhsReceiverStruct[],
     balanceDelta: PromiseOrValue<BigNumberish>,
-    newReceivers: DripsReceiverStruct[],
+    newReceivers: KtrhsReceiverStruct[],
     maxEndHint1: PromiseOrValue<BigNumberish>,
     maxEndHint2: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1375,21 +1375,21 @@ export interface DripsHub extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  squeezeDrips(
+  squeezeKtrhs(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
     senderId: PromiseOrValue<BigNumberish>,
     historyHash: PromiseOrValue<BytesLike>,
-    dripsHistory: DripsHistoryStruct[],
+    ktrhsHistory: KtrhsHistoryStruct[],
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  squeezeDripsResult(
+  squeezeKtrhsResult(
     userId: PromiseOrValue<BigNumberish>,
     erc20: PromiseOrValue<string>,
     senderId: PromiseOrValue<BigNumberish>,
     historyHash: PromiseOrValue<BytesLike>,
-    dripsHistory: DripsHistoryStruct[],
+    ktrhsHistory: KtrhsHistoryStruct[],
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
@@ -1433,7 +1433,7 @@ export interface DripsHub extends BaseContract {
 
     DRIVER_ID_OFFSET(overrides?: CallOverrides): Promise<BigNumber>;
 
-    MAX_DRIPS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
+    MAX_KTRHS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
 
     MAX_SPLITS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1450,7 +1450,7 @@ export interface DripsHub extends BaseContract {
     balanceAt(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       timestamp: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1469,14 +1469,14 @@ export interface DripsHub extends BaseContract {
 
     cycleSecs(overrides?: CallOverrides): Promise<number>;
 
-    dripsState(
+    ktrhsState(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<
       [string, string, number, BigNumber, number] & {
-        dripsHash: string;
-        dripsHistoryHash: string;
+        ktrhsHash: string;
+        ktrhsHistoryHash: string;
         updateTime: number;
         balance: BigNumber;
         maxEnd: number;
@@ -1507,14 +1507,14 @@ export interface DripsHub extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    hashDrips(
-      receivers: DripsReceiverStruct[],
+    hashKtrhs(
+      receivers: KtrhsReceiverStruct[],
       overrides?: CallOverrides
     ): Promise<string>;
 
-    hashDripsHistory(
-      oldDripsHistoryHash: PromiseOrValue<BytesLike>,
-      dripsHash: PromiseOrValue<BytesLike>,
+    hashKtrhsHistory(
+      oldKtrhsHistoryHash: PromiseOrValue<BytesLike>,
+      ktrhsHash: PromiseOrValue<BytesLike>,
       updateTime: PromiseOrValue<BigNumberish>,
       maxEnd: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1549,20 +1549,20 @@ export interface DripsHub extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
-    receivableDripsCycles(
+    receivableKtrhsCycles(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<number>;
 
-    receiveDrips(
+    receiveKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    receiveDripsResult(
+    receiveKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
@@ -1581,12 +1581,12 @@ export interface DripsHub extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setDrips(
+    setKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       balanceDelta: PromiseOrValue<BigNumberish>,
-      newReceivers: DripsReceiverStruct[],
+      newReceivers: KtrhsReceiverStruct[],
       maxEndHint1: PromiseOrValue<BigNumberish>,
       maxEndHint2: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1633,21 +1633,21 @@ export interface DripsHub extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    squeezeDrips(
+    squeezeKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    squeezeDripsResult(
+    squeezeKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1722,33 +1722,33 @@ export interface DripsHub extends BaseContract {
       collected?: null
     ): CollectedEventFilter;
 
-    "DripsReceiverSeen(bytes32,uint256,uint256)"(
+    "KtrhsReceiverSeen(bytes32,uint256,uint256)"(
       receiversHash?: PromiseOrValue<BytesLike> | null,
       userId?: PromiseOrValue<BigNumberish> | null,
       config?: null
-    ): DripsReceiverSeenEventFilter;
-    DripsReceiverSeen(
+    ): KtrhsReceiverSeenEventFilter;
+    KtrhsReceiverSeen(
       receiversHash?: PromiseOrValue<BytesLike> | null,
       userId?: PromiseOrValue<BigNumberish> | null,
       config?: null
-    ): DripsReceiverSeenEventFilter;
+    ): KtrhsReceiverSeenEventFilter;
 
-    "DripsSet(uint256,uint256,bytes32,bytes32,uint128,uint32)"(
+    "KtrhsSet(uint256,uint256,bytes32,bytes32,uint128,uint32)"(
       userId?: PromiseOrValue<BigNumberish> | null,
       assetId?: PromiseOrValue<BigNumberish> | null,
       receiversHash?: PromiseOrValue<BytesLike> | null,
-      dripsHistoryHash?: null,
+      ktrhsHistoryHash?: null,
       balance?: null,
       maxEnd?: null
-    ): DripsSetEventFilter;
-    DripsSet(
+    ): KtrhsSetEventFilter;
+    KtrhsSet(
       userId?: PromiseOrValue<BigNumberish> | null,
       assetId?: PromiseOrValue<BigNumberish> | null,
       receiversHash?: PromiseOrValue<BytesLike> | null,
-      dripsHistoryHash?: null,
+      ktrhsHistoryHash?: null,
       balance?: null,
       maxEnd?: null
-    ): DripsSetEventFilter;
+    ): KtrhsSetEventFilter;
 
     "DriverAddressUpdated(uint32,address,address)"(
       driverId?: PromiseOrValue<BigNumberish> | null,
@@ -1815,18 +1815,18 @@ export interface DripsHub extends BaseContract {
       admin?: PromiseOrValue<string> | null
     ): PauserRevokedEventFilter;
 
-    "ReceivedDrips(uint256,uint256,uint128,uint32)"(
+    "ReceivedKtrhs(uint256,uint256,uint128,uint32)"(
       userId?: PromiseOrValue<BigNumberish> | null,
       assetId?: PromiseOrValue<BigNumberish> | null,
       amt?: null,
       receivableCycles?: null
-    ): ReceivedDripsEventFilter;
-    ReceivedDrips(
+    ): ReceivedKtrhsEventFilter;
+    ReceivedKtrhs(
       userId?: PromiseOrValue<BigNumberish> | null,
       assetId?: PromiseOrValue<BigNumberish> | null,
       amt?: null,
       receivableCycles?: null
-    ): ReceivedDripsEventFilter;
+    ): ReceivedKtrhsEventFilter;
 
     "Split(uint256,uint256,uint256,uint128)"(
       userId?: PromiseOrValue<BigNumberish> | null,
@@ -1861,20 +1861,20 @@ export interface DripsHub extends BaseContract {
       receiversHash?: PromiseOrValue<BytesLike> | null
     ): SplitsSetEventFilter;
 
-    "SqueezedDrips(uint256,uint256,uint256,uint128,bytes32[])"(
+    "SqueezedKtrhs(uint256,uint256,uint256,uint128,bytes32[])"(
       userId?: PromiseOrValue<BigNumberish> | null,
       assetId?: PromiseOrValue<BigNumberish> | null,
       senderId?: PromiseOrValue<BigNumberish> | null,
       amt?: null,
-      dripsHistoryHashes?: null
-    ): SqueezedDripsEventFilter;
-    SqueezedDrips(
+      ktrhsHistoryHashes?: null
+    ): SqueezedKtrhsEventFilter;
+    SqueezedKtrhs(
       userId?: PromiseOrValue<BigNumberish> | null,
       assetId?: PromiseOrValue<BigNumberish> | null,
       senderId?: PromiseOrValue<BigNumberish> | null,
       amt?: null,
-      dripsHistoryHashes?: null
-    ): SqueezedDripsEventFilter;
+      ktrhsHistoryHashes?: null
+    ): SqueezedKtrhsEventFilter;
 
     "Unpaused(address)"(
       pauser?: PromiseOrValue<string> | null
@@ -1918,7 +1918,7 @@ export interface DripsHub extends BaseContract {
 
     DRIVER_ID_OFFSET(overrides?: CallOverrides): Promise<BigNumber>;
 
-    MAX_DRIPS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
+    MAX_KTRHS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
 
     MAX_SPLITS_RECEIVERS(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1937,7 +1937,7 @@ export interface DripsHub extends BaseContract {
     balanceAt(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       timestamp: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1956,7 +1956,7 @@ export interface DripsHub extends BaseContract {
 
     cycleSecs(overrides?: CallOverrides): Promise<BigNumber>;
 
-    dripsState(
+    ktrhsState(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -1986,14 +1986,14 @@ export interface DripsHub extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    hashDrips(
-      receivers: DripsReceiverStruct[],
+    hashKtrhs(
+      receivers: KtrhsReceiverStruct[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    hashDripsHistory(
-      oldDripsHistoryHash: PromiseOrValue<BytesLike>,
-      dripsHash: PromiseOrValue<BytesLike>,
+    hashKtrhsHistory(
+      oldKtrhsHistoryHash: PromiseOrValue<BytesLike>,
+      ktrhsHash: PromiseOrValue<BytesLike>,
       updateTime: PromiseOrValue<BigNumberish>,
       maxEnd: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -2030,20 +2030,20 @@ export interface DripsHub extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<BigNumber>;
 
-    receivableDripsCycles(
+    receivableKtrhsCycles(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    receiveDrips(
+    receiveKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    receiveDripsResult(
+    receiveKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
@@ -2064,12 +2064,12 @@ export interface DripsHub extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    setDrips(
+    setKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       balanceDelta: PromiseOrValue<BigNumberish>,
-      newReceivers: DripsReceiverStruct[],
+      newReceivers: KtrhsReceiverStruct[],
       maxEndHint1: PromiseOrValue<BigNumberish>,
       maxEndHint2: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -2106,21 +2106,21 @@ export interface DripsHub extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    squeezeDrips(
+    squeezeKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    squeezeDripsResult(
+    squeezeKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -2169,7 +2169,7 @@ export interface DripsHub extends BaseContract {
 
     DRIVER_ID_OFFSET(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    MAX_DRIPS_RECEIVERS(
+    MAX_KTRHS_RECEIVERS(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -2194,7 +2194,7 @@ export interface DripsHub extends BaseContract {
     balanceAt(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       timestamp: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -2213,7 +2213,7 @@ export interface DripsHub extends BaseContract {
 
     cycleSecs(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    dripsState(
+    ktrhsState(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -2243,14 +2243,14 @@ export interface DripsHub extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    hashDrips(
-      receivers: DripsReceiverStruct[],
+    hashKtrhs(
+      receivers: KtrhsReceiverStruct[],
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    hashDripsHistory(
-      oldDripsHistoryHash: PromiseOrValue<BytesLike>,
-      dripsHash: PromiseOrValue<BytesLike>,
+    hashKtrhsHistory(
+      oldKtrhsHistoryHash: PromiseOrValue<BytesLike>,
+      ktrhsHash: PromiseOrValue<BytesLike>,
       updateTime: PromiseOrValue<BigNumberish>,
       maxEnd: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -2287,20 +2287,20 @@ export interface DripsHub extends BaseContract {
 
     proxiableUUID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    receivableDripsCycles(
+    receivableKtrhsCycles(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    receiveDrips(
+    receiveKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    receiveDripsResult(
+    receiveKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       maxCycles: PromiseOrValue<BigNumberish>,
@@ -2321,12 +2321,12 @@ export interface DripsHub extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    setDrips(
+    setKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
-      currReceivers: DripsReceiverStruct[],
+      currReceivers: KtrhsReceiverStruct[],
       balanceDelta: PromiseOrValue<BigNumberish>,
-      newReceivers: DripsReceiverStruct[],
+      newReceivers: KtrhsReceiverStruct[],
       maxEndHint1: PromiseOrValue<BigNumberish>,
       maxEndHint2: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -2363,21 +2363,21 @@ export interface DripsHub extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    squeezeDrips(
+    squeezeKtrhs(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    squeezeDripsResult(
+    squeezeKtrhsResult(
       userId: PromiseOrValue<BigNumberish>,
       erc20: PromiseOrValue<string>,
       senderId: PromiseOrValue<BigNumberish>,
       historyHash: PromiseOrValue<BytesLike>,
-      dripsHistory: DripsHistoryStruct[],
+      ktrhsHistory: KtrhsHistoryStruct[],
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 

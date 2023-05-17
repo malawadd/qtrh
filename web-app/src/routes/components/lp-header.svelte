@@ -1,8 +1,7 @@
 <script lang="ts">
   import BetaBadge from '$lib/components/beta-badge/beta-badge.svelte';
   import Button from '$lib/components/button/button.svelte';
-  import DripsLogo from '$lib/components/illustrations/logo.svelte';
-  import ThreeDrips from '$lib/components/illustrations/three-drips.svelte';
+  import KtrhLogo from '$lib/components/illustrations/logo.svelte';
   import scrollStore from '$lib/stores/scroll/scroll.store';
 
   $: scrolledDown = $scrollStore.pos > 10;
@@ -13,8 +12,7 @@
   <div class="left">
     <a class="logo" href="/">
       <div class="inner" class:logoOffset={showLogo}>
-        <ThreeDrips />
-        <DripsLogo />
+        <KtrhLogo />
       </div>
     </a>
     <div class="beta-notice" class:offset={showLogo}><BetaBadge /></div>
