@@ -1,4 +1,4 @@
-const IPFS_GATEWAY_DOMAIN = 'drips.mypinata.cloud';
+const IPFS_GATEWAY_DOMAIN = 'ktrhs.mypinata.cloud';
 
 /**
  * Fetch the given hash from IPFS.
