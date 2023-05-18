@@ -1,4 +1,4 @@
-import type * as radicleKtrhs from 'radicle-ktrhs';
+import type * as radicleKtrhs from 'ktrhs';
 import { readable } from 'svelte/store';
 import * as metadata from '../metadata';
 
@@ -173,8 +173,8 @@ const MOCK_KTRHS_SET_EVENTS = [
   },
 ];
 
-vi.mock('radicle-ktrhs', async () => ({
-  ...((await vi.importActual('radicle-ktrhs')) as typeof radicleKtrhs),
+vi.mock('ktrhs', async () => ({
+  ...((await vi.importActual('ktrhs')) as typeof radicleKtrhs),
   KtrhsSubgraphClient: {
     create: () => ({
       getKtrhsSetEventsByUserId: () => MOCK_KTRHS_SET_EVENTS,

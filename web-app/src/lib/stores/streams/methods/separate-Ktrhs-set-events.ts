@@ -1,4 +1,4 @@
-import { Utils, type KtrhsSetEvent } from 'radicle-ktrhs';
+import { Utils, type KtrhsSetEvent } from 'ktrhs';
 import sortKtrhsSetEvents from './sort-ktrhs-set-events';
 
 

@@ -1,4 +1,4 @@
-import { Utils } from 'radicle-ktrhs';
+import { Utils } from 'ktrhs';
 import { estimateAssetConfig } from '../estimate';
 
 const MOCK_USER = {

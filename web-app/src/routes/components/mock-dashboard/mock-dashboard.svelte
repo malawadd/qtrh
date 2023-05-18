@@ -2,9 +2,9 @@
   import PaddedHorizontalScroll from '$lib/components/padded-horizontal-scroll/padded-horizontal-scroll.svelte';
   import SectionHeader from '$lib/components/section-header/section-header.svelte';
   import Table from '$lib/components/table/table.svelte';
-  import TokensIcon from 'radicle-design-system/icons/Orgs.svelte';
-  import Plus from 'radicle-design-system/icons/Plus.svelte';
-  import TokenStreams from 'radicle-design-system/icons/TokenStreams.svelte';
+  import TokensIcon from 'design-system/icons/Orgs.svelte';
+  import Plus from 'design-system/icons/Plus.svelte';
+  import TokenStreams from 'design-system/icons/TokenStreams.svelte';
   import { balancesOptions } from './mock-balances-table';
   import { streamsOptions } from './mock-streams.table';
 
