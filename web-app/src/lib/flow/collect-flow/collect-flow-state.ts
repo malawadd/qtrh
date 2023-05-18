@@ -1,6 +1,6 @@
 import { newRestorer, type Restorer } from '$lib/utils/restorer';
 import type { ContractReceipt } from 'ethers';
-import type { SplitsEntry } from 'ktrhs';
+import type { SplitsEntry } from 'ktrh';
 import { writable } from 'svelte/store';
 
 type Restorable = {
