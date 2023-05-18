@@ -10,7 +10,7 @@ import  Utils  from './utils';
 import WalletConnectProvider from '@walletconnect/web3-provider/dist/umd/index.min.js';
 import testnetMockProvider from './__test__/local-testnet-mock-provider';
 import isTest from '$lib/utils/is-test';
-import { getAddressDriverClient } from '$lib/utils/get-ktrhs-clients';
+import { getAddressDriverClient } from '$lib/utils/get-clients';
 import globalAdvisoryStore from '../global-advisory/global-advisory.store';
 
 import SafeAppsSDK from '$lib/stores/wallet/safe/sdk';
