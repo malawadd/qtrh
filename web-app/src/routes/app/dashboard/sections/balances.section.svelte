@@ -12,7 +12,7 @@
   import { goto } from '$app/navigation';
   import ChevronRightCell from '$lib/components/table/cells/chevron-right-cell.svelte';
   import unreachable from '$lib/utils/unreachable';
-  import { AddressDriverClient } from 'ktrhs';
+  import { AddressDriverClient } from 'ktrh';
   import wallet from '$lib/stores/wallet/wallet.store';
   import Stepper from '$lib/components/stepper/stepper.svelte';
   import getTopUpFlowSteps from '$lib/flows/top-up-flow/top-up-flow-steps';

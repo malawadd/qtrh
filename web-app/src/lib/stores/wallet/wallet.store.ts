@@ -3,7 +3,7 @@ import type { Network } from '@ethersproject/networks';
 import Web3Modal from 'web3modal';
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import { AddressDriverClient } from 'ktrhs';
+import { AddressDriverClient } from 'ktrh';
 import  Utils  from './utils';
 
 // https://github.com/vitejs/vite/issues/7257#issuecomment-1079579892

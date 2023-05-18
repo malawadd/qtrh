@@ -1,5 +1,5 @@
 import uniswapTokenList from '@uniswap/default-token-list';
-import { Utils } from 'ktrhs';
+import { Utils } from 'ktrh';
 import { get } from 'svelte/store';
 import tokens from '.';
 

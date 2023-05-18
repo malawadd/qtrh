@@ -1,5 +1,5 @@
 import deduplicateArray from '$lib/utils/deduplicate-array';
-import type { KtrhsSetEvent } from 'ktrhs';
+import type { KtrhsSetEvent } from 'ktrh';
 import sortKtrhsSetEvents from './sort-ktrhs-set-events';
 
 interface KtrhsReceiverSeenEvent {

@@ -9,7 +9,7 @@
   import type { TextInputValidationState } from 'design-system/TextInput';
   import Button from '$lib/components/button/button.svelte';
   import streams from '$lib/stores/streams';
-  import { constants } from 'ktrhs';
+  import { constants } from 'ktrh';
   import { createEventDispatcher, onMount } from 'svelte';
   import type { StepComponentEvents } from '$lib/components/stepper/types';
   import wallet from '$lib/stores/wallet/wallet.store';

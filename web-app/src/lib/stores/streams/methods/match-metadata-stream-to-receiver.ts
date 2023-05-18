@@ -1,4 +1,4 @@
-import { Utils } from 'ktrhs';
+import { Utils } from 'ktrh';
 import type { z } from 'zod';
 import type { streamMetadataSchema } from '../metadata';
 

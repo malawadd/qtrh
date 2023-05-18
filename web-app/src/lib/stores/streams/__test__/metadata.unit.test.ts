@@ -1,4 +1,4 @@
-import type * as radicleKtrhs from 'ktrhs';
+import type * as radicleKtrhs from 'ktrh';
 import { readable } from 'svelte/store';
 import * as metadata from '../metadata';
 

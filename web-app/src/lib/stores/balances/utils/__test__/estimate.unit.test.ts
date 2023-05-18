@@ -1,4 +1,4 @@
-import { Utils } from 'ktrhs';
+import { Utils } from 'ktrh';
 import { estimateAssetConfig } from '../estimate';
 
 const MOCK_USER = {

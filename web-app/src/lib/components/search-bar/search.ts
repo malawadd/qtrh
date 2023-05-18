@@ -7,7 +7,7 @@ import type { TokenInfoWrapper } from '$lib/stores/tokens/tokens.store';
 import { get } from 'svelte/store';
 import ens from '$lib/stores/ens';
 import { isAddress } from 'ethers/lib/utils';
-import { AddressDriverClient } from 'ktrhs';
+import { AddressDriverClient } from 'ktrh';
 
 export enum SearchItemType {
   PROFILE,

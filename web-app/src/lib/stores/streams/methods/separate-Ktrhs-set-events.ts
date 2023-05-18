@@ -1,4 +1,4 @@
-import { Utils, type KtrhsSetEvent } from 'ktrhs';
+import { Utils, type KtrhsSetEvent } from 'ktrh';
 import sortKtrhsSetEvents from './sort-ktrhs-set-events';
 
 

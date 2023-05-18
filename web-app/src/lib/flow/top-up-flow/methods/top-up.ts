@@ -7,7 +7,7 @@ import expect from '$lib/utils/expect';
 import { getAddressDriverClient, getAddressDriverTxFactory } from '$lib/utils/get-clients';
 import mapFilterUndefined from '$lib/utils/map-filter-undefined';
 import { constants } from 'ethers';
-import { ERC20TxFactory } from 'ktrhs';
+import { ERC20TxFactory } from 'ktrh';
 import type { createEventDispatcher } from 'svelte';
 import { get } from 'svelte/store';
 import assert from '$lib/utils/assert';
